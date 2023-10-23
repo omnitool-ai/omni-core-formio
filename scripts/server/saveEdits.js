@@ -16,7 +16,7 @@ const script = {
 
       const integration = ctx.app.integrations.get('workflow')
       let recipe = await integration.getWorkflow(payload.recipe.id, payload.recipe.version, ctx.userId, true)
-      let  ui = Object.values(recipe.rete.nodes).find((n) => n.name === 'omni-extension-formio:formio.auto_ui')
+      let  ui = Object.values(recipe.rete.nodes).find((n) => n.name === 'omni-core-formio:formio.auto_ui')
       ui.data.source = payload.schema
 
       recipe = await integration.updateWorkflow (
@@ -24,7 +24,7 @@ const script = {
         { rete: recipe.rete },
         ctx.userId
       )
-        ui = Object.values(recipe.rete.nodes).find((n) => n.name === 'omni-extension-formio:formio.auto_ui')
+        ui = Object.values(recipe.rete.nodes).find((n) => n.name === 'omni-core-formio:formio.auto_ui')
         const pl = { type: 'control:setvalue', node_id: ui.id, controlId: 'source', value: ui.data.source, componentKey: ui.name, sessionId: ctx.sessionId }
         // ctx.app.verbose('SSE:control:setValue', payload)
         await ctx.app.emit('sse_message', pl)

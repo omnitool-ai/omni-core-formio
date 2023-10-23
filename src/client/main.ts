@@ -5,7 +5,7 @@
 
 //import './css/bootstrap-icons_font_bootstrap-icons.css'
 import {OmniSDKClient} from 'omni-sdk';
-const sdk = new OmniSDKClient("omni-extension-formio").init();
+const sdk = new OmniSDKClient("omni-core-formio").init();
 import './reset.css'
 import './node_modules/bootstrap/dist/css/bootstrap.min.css'
 import  './node_modules/@formio/js/dist/formio.full.min.css'
@@ -146,7 +146,7 @@ const boot = async () =>
 {
   const result =  (await sdk.runExtensionScript('recipe',  {recipe:sdk.args.recipe}))
 
-  const ui:any = Object.values(result.recipe.rete.nodes).find((n:any) => n.name === 'omni-extension-formio:formio.auto_ui')
+  const ui:any = Object.values(result.recipe.rete.nodes).find((n:any) => n.name === 'omni-core-formio:formio.auto_ui')
   const data:any = ui.data.source  || {}
 
   addComponents(data.components, form)
