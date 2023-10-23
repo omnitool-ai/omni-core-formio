@@ -1,5 +1,5 @@
 {
-  "name": "omni-extension-formio-client",
+  "name": "omni-core-formio-client",
   "packageManager": "yarn@3.3.1",
   "scripts": {
     "build": "node ./build.mjs"
